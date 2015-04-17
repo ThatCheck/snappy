@@ -390,9 +390,9 @@ abstract class AbstractGenerator implements GeneratorInterface
     protected function buildCommand($binary, $input, $output, array $options = array())
     {
         $command = $binary;
-        $escapedBinary = escapeshellarg($binary);
+        $escapedBinary = "\"".escapeshellarg($binary)."\"";
         if (is_executable($escapedBinary)) {
-            $command = "\"".$escapedBinary."\"";
+            $command = $escapedBinary;
         }
 
         foreach ($options as $key => $option) {
